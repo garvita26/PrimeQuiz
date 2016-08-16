@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">PrimeQuiz</string>
+    <string name="yesbutton">Yes</string>
+    <string name="nobutton">No</string>
+    <string name="nextbutton">Next</string>
+    <string name="incorrecttoast">incorrect!</string>
+    <string name="correcttoast">correct!</string>
+    <string name="ques">Is %1$d a prime number or not?</string>
+</resources>
