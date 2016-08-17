@@ -9,17 +9,13 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
-
-
-
 public class Prime extends AppCompatActivity {
     private Button mYesButton;
     private Button mNoButton;
     private Button mNextButton;
     private TextView mQuestion;
-   private boolean flag ;
-
+    private boolean flag ;
+    private boolean isPressed=false;
     private static final String TAG = "PrimeActivity";
 
 
@@ -58,6 +54,7 @@ public class Prime extends AppCompatActivity {
    private void checkPrime(int random) {
        mNoButton.setEnabled(true);
        mYesButton.setEnabled(true);
+       isPressed=false;
         flag=true;
         for (int i = 2; i <= random / 2; i++) {
             if (random % i == 0) {
@@ -70,6 +67,7 @@ public class Prime extends AppCompatActivity {
 
                     public void onClick(View v) {
                       mNoButton.setEnabled(false);
+                        isPressed=true;
                         if (!flag) {
                             Toast.makeText(Prime.this, R.string.incorrecttoast, Toast.LENGTH_SHORT).show();
                         } else {
@@ -82,6 +80,7 @@ public class Prime extends AppCompatActivity {
                 new Button.OnClickListener() {
                     public void onClick(View v) {
                         mYesButton.setEnabled(false);
+                        isPressed=true;
                         if (!flag) {
                             Toast.makeText(Prime.this, R.string.correcttoast, Toast.LENGTH_SHORT).show();
                         } else {
@@ -94,7 +93,14 @@ public class Prime extends AppCompatActivity {
         mNextButton.setOnClickListener(
                 new Button.OnClickListener() {
                     public void onClick(View v) {
-                        generateQuestion();
+                        if(!isPressed)
+                        {
+                            Toast.makeText(Prime.this, "please answer first!", Toast.LENGTH_SHORT).show();
+                        }
+                        else
+                        {
+                            generateQuestion();
+                        }
 
                     }
                 }
